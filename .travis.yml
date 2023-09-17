@@ -1,0 +1,12 @@
+language: python
+python:
+  - "3.11"
+install:
+  - pip install --quiet --upgrade --requirement requirements.txt
+script:
+  - make check lint test
+  - make clean build
+  - make deploy ENVIRONMENT="Staging" PLATFORM="Travis CI" FUNCTION=${STAGING_FUNCTION_NAME} VERSION=${TRAVIS_COMMIT} BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
+  - make testdeployment URL=${STAGING_URL}
+  - make deploy ENVIRONMENT="Production" PLATFORM="Travis CI" FUNCTION=${PRODUCTION_FUNCTION_NAME} VERSION=${TRAVIS_COMMIT} BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
+  - make testdeployment URL=${PRODUCTION_URL}
