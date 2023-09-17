@@ -81,7 +81,7 @@ deploy:
 		--function-name="$(FUNCTION)"
 
 testdeployment:
-	curl -s $(URL) | grep "<h1>The Sample Application</h1>"
+	curl -s $(URL) | grep $(VERSION)
 
 clean:
 	rm -vf lambda.zip

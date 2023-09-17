@@ -30,10 +30,10 @@ script:
   - make deploy ENVIRONMENT="Staging" PLATFORM="Travis CI" FUNCTION=${STAGING_FUNCTION_NAME} VERSION=${TRAVIS_COMMIT} BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
   
   # Test Staging: Perform deployment testing for the staging environment.
-  - make testdeployment URL=${STAGING_URL}
+  - make testdeployment URL=${STAGING_URL} VERSION=${TRAVIS_COMMIT}
   
   # Deploy Production: Deploy to the production environment using specified parameters.
   - make deploy ENVIRONMENT="Production" PLATFORM="Travis CI" FUNCTION=${PRODUCTION_FUNCTION_NAME} VERSION=${TRAVIS_COMMIT} BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
   
   # Test Production: Perform deployment testing for the production environment.
-  - make testdeployment URL=${PRODUCTION_URL}
+  - make testdeployment URL=${PRODUCTION_URL} VERSION=${TRAVIS_COMMIT}
