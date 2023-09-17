@@ -6,20 +6,16 @@ language: python
 python:
   - "3.9"
 
-# Configure caching to cache pip packages and 
-# the './aws' directory for faster builds.
-cache: 
-  pip:
-  directories:
-    - ./aws
+# Try to speed up builds with caching
+cache: pip
 
 # 'install' represent the 'Requirements' stage of the pipeline.
 install:
   # Install required Python packages specified in the 'requirements.txt' file.
   - pip install --quiet --upgrade --requirement requirements.txt
   
-  # Install AWS CLI if it's not already available.
-  - if [ ! -d "./aws" ]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" ; unzip -o awscliv2.zip ; sudo ./aws/install ; fi
+  # Install AWS CLI
+  - pip install --quiet --upgrade awscli
 
 # Each step in the 'script' represents the remaining stages of the pipeline.
 script:
