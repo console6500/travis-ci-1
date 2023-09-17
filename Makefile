@@ -1,6 +1,5 @@
 FUNCTION=undefined
 PLATFORM=undefined
-ENVIRONMENT=undefined
 URL=undefined
 VERSION=undefined
 BUILD_NUMBER=undefined
